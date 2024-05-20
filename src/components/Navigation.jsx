@@ -1,6 +1,7 @@
 import React from "react";
 import "./Navigation.css";
 import { Link } from "react-router-dom";
+import { IoCartOutline } from "react-icons/io5";
 
 export default function Nagivation() {
     return (
@@ -9,10 +10,6 @@ export default function Nagivation() {
                 <a className="navbar-brand" href="#">
                     <img src="./assets/shared/desktop/logo.svg" />
                 </a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    {/* <span className="navbar-toggler-icon"></span> */}
-                    <i className="fas fa-caret-down" style={{ color: "white" }}></i>
-                </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div id="listOfLinks" className="navbar-nav">
                         <Link to="/" className="navLinks">HOME</Link>
@@ -21,6 +18,7 @@ export default function Nagivation() {
                         <Link to="/earphones" className="navLinks">EARPHONES</Link>
                     </div>
                 </div>
+                <IoCartOutline className="icon" />
             </div>
         </nav>
 
