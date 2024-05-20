@@ -42,7 +42,7 @@ const Navbar = () => {
             >
               <div className="flex flex-col p-5">
                 <div className="flex justify-between items-center mb-8">
-                  <span className="text-2xl">Cart()</span>
+                  <span className="text-2xl">Cart</span>
                   <span className="underline">Remove all</span>
                 </div>
                 <div className="cart flex justify-between">

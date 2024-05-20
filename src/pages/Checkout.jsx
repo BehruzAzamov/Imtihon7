@@ -14,19 +14,19 @@ const Checkout = () => {
             type="text"
             label="Name"
             name="Name"
-            defaultvalue="Alexia Ward"
+            defaultvalue="Alexan"
           />
           <FormInput
             type="email"
             label="Email Address"
             name="email"
-            defaultvalue="..@gmail.com"
+            defaultvalue="??@gmail.com"
           />
           <FormInput
             type="text"
             label="Number"
             name="number"
-            defaultvalue="+998 90 xx xx"
+            defaultvalue="+998 xx xxx xx xx"
           />
         </div>
         <span className="uppercase text-orange-400">shipping info</span>
@@ -36,26 +36,26 @@ const Checkout = () => {
             type="text"
             label="Address"
             name="address"
-            defaultvalue="Sayilgoh 112/A"
+            defaultvalue="Sayilgoh 47"
           />
           <div className="grid grid-cols-2 gap-4">
             <FormInput
               type="number"
               label="ZIP Code"
               name="zipcode"
-              defaultvalue="1000001"
+              defaultvalue="123321"
             />
             <FormInput
               type="text"
               label="City"
               name="city"
-              defaultvalue="New York"
+              defaultvalue="Ferghana"
             />
             <FormInput
               type="text"
               label="Country"
               name="country"
-              defaultvalue="United States"
+              defaultvalue="Uzbekistan"
             />
           </div>
         </div>
