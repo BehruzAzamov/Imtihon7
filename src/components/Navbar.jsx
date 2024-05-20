@@ -43,17 +43,16 @@ const Navbar = () => {
               <div className="flex flex-col p-5">
                 <div className="flex justify-between items-center mb-8">
                   <span className="text-2xl">Cart</span>
-                  <span className="underline">Remove all</span>
+                  <button className="underline">Remove all</button>
                 </div>
-                <div className="cart flex justify-between">
-                  <img src="" alt="" />
-                  <div className="">
-                    <h3>name</h3>
-                    <span>price</span>
+                <div className="cart mb-4 flex justify-between">
+                  <div className="mb-4">
+                    <h3></h3>
+                    <span></span>
                   </div>
-                  <div className="flex items-center gap-3 bg-base-300">
+                  <div className="flex btn items-center gap-4 bg-base-200">
                     <button
-                      className="text-[14px] text-black hover:text-cream font-bold tracking-[1px] cursor-pointer"
+                      className="text-[14px] pl-3 text-black hover:text-cream font-bold tracking-[1px] cursor-pointer"
                     >
                       -
                     </button>
@@ -61,7 +60,7 @@ const Navbar = () => {
                       0
                     </div>
                     <button
-                      className="text-[14px] text-black hover:text-cream font-bold tracking-[1px] cursor-pointer"
+                      className="text-[14px] pr-3 text-black hover:text-cream font-bold tracking-[1px] cursor-pointer"
                     >
                       +
                     </button>

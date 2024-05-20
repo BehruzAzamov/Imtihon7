@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import { PreFooter, CartList } from "../components";
 import BtnRev from "../components/BtnRev";
 
 const Earphones = () => {
+  const navigate = useNavigate();
   const [products, setProducts] = useState(null);
-  console.log(products);
+
   useEffect(() => {
     fetch("http://localhost:3000/products")
       .then((data) => {
@@ -18,6 +20,10 @@ const Earphones = () => {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  const handleClick = (id) => {
+    navigate(`/singleProduct/${id}`);
+  };
 
   return (
     <div className="">
@@ -48,7 +54,7 @@ const Earphones = () => {
                     <p className="text-base text-gray-300 mb-4">
                       {item.description}
                     </p>
-                    <BtnRev id={item.id} />
+                    <BtnRev id={item.id} onClick={() => handleClick(item.id)} />
                   </div>
                 </div>
               </div>
