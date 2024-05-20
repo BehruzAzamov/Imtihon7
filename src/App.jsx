@@ -1,53 +1,92 @@
-import React, { useEffect, useState } from 'react';
-import { HashRouter as Router, Route, Routes } from "react-router-dom";
-import './App.css';
 import {
-  HomePage,
-  Nagivation,
-  Footer,
-  HeadPhones,
-  Speakers,
-  EarPhones,
-  ProductDetail,
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
+import {
   Checkout,
-  Thankyou,
-} from './components/'
-
+  HomeLayout,
+  Landing,
+  Login,
+  Register,
+  SingleProduct,
+  Headphones,
+  Earphones,
+  Speakers,
+  Error,
+} from "./pages";
+import { action as RegisterAction } from "./pages/Register";
+import { action as LoginAction } from "./pages/Login";
+import { ProtectedRotes } from "./components";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { authReady, login } from "./features/user/userSlice";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase/firebaseConfig";
 function App() {
-    const [product, setProduct] = useState({});
-    const [data, setDate] = useState([]);
+  const { user, authReadyState } = useSelector((state) => state.userState);
 
-    useEffect(() => {
-      fetch("./data.json")
-        .then(response => response.json())
-        .then(value => setDate(value))
-    }, [])
+  const routes = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <ProtectedRotes user={user}>
+          <HomeLayout />
+        </ProtectedRotes>
+      ),
+      errorElement: <Error />,
+      children: [
+        {
+          index: true,
+          element: <Landing />,
+          // loader: FeaturedLoader,
+        },
+        {
+          path: "/headphones",
+          element: <Headphones />,
+          // loader: ProductsLoader,
+        },
+        {
+          path: "/speakers",
+          element: <Speakers />,
+        },
 
-    function viewProduct(slug) {
-      data.map(item => item.slug == slug && setProduct(item))
-    }
-
-    return (
-      <Router>
-        <div style={{ backgroundColor: "#141414" }}>
-          <Nagivation />
-        </div>
-        <Routes>
-          <Route exact path="/" element={<HomePage send={slug => viewProduct(slug)} />} />
-          <Route exact path="/headphones" element={<HeadPhones send={slug => viewProduct(slug)} />} />
-          <Route exact path="/speakers" element={<Speakers send={slug => viewProduct(slug)} />} />
-          <Route exact path="/earphones" element={<EarPhones send={slug => viewProduct(slug)} />} />
-          <Route exact path="/prdDetail" element={<ProductDetail product={product} send={slug => viewProduct(slug)} />} />
-          <Route exact path="/checkout" element={
-            <>
-              <Checkout />
-              <Thankyou />
-            </>
-          } />
-        </Routes>
-        <Footer />
-      </Router>
-    );
-  }
+        {
+          path: "/earphones",
+          element: <Earphones />,
+        },
+        {
+          path: "/products/:id",
+          element: <SingleProduct />,
+          // loader: SingleLoader,
+        },
+        {
+          path: "/checkout",
+          element: <Checkout />,
+        },
+      ],
+    },
+    {
+      path: "/login",
+      element: user ? <Navigate to="/" /> : <Login />,
+      errorElement: <Error />,
+      action: LoginAction,
+    },
+    {
+      path: "/register",
+      element: user ? <Navigate to="/" /> : <Register />,
+      errorElement: <Error />,
+      action: RegisterAction,
+    },
+  ]);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      dispatch(login(user));
+      dispatch(authReady());
+    });
+  }, []);
+  return <>{authReady && <RouterProvider router={routes} />}</>;
+}
 
 export default App;

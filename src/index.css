@@ -1,19 +1,19 @@
-* {
-  margin: 0;
-  box-sizing: border-box;
-  padding: 0;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-#root {
+@font-face {
+  font-display: swap;
   font-family: "Manrope";
   font-style: normal;
-  position: relative;
+  font-weight: 400;
+  src: url("./fonts/Manrope-Medium.ttf") format("woff2");
 }
-
-.container {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1440px;
-  padding-left: 20px;
-  padding-right: 20px;
+@layer components {
+  .align-element {
+    @apply max-w-[1110px] w-full px-5 mx-auto;
+  }
+}
+#hero-bg {
+  background-image: url("./assets/home/desktop/image-hero.jpg");
 }

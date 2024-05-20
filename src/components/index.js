@@ -1,9 +1,12 @@
-export { default as HomePage } from "./HomePage";
-export { default as Nagivation } from "./Navigation";
-export {default as Footer} from './Footer'
-export {default as HeadPhones } from './HeadPhones'
-export {default as Speakers } from './Speakers'
-export {default as EarPhones} from './EarPhones'
-export {default as ProductDetail} from './ProductDetail'
-export {default as Checkout} from './Checkout'
-export {default as Thankyou} from './Thankyou'
+export { default as Navbar } from "./Navbar";
+export { default as Navlinks } from "./Navlinks";
+export { default as Header } from "./Header";
+export { default as Hero } from "./Hero";
+export { default as Footer } from "./Footer";
+export { default as CartList } from "./CartList";
+export { default as CartsLanding } from "./CartsLanding";
+export { default as PreFooter } from "./PreFooter";
+export { default as Cart } from "./Cart";
+export { default as FormInput } from "./FormInput";
+export { default as SubmitBtn } from "./SubmitBtn";
+export { default as ProtectedRotes } from "./ProtectedRotes";
